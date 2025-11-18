@@ -22,7 +22,6 @@ void main_menu(){
 }
 
 void display_cart(){
-    // vector<Product> cart;
     if(cart.empty()){
         cout<<"Your shopping cart is empty!\n";
         return;
@@ -47,29 +46,25 @@ void display_cart(){
 
 // Function to add products
 void add_product(){
-    // vector<Product> cart;
+    cout<<"Please enter the new product informations\n";
+    Product newProduct;
 
-        cout<<"Please enter the new product informations\n";
-        Product newProduct;
+    cout<<"Product name: ";
+    getline(cin>> ws, newProduct.name);
 
-        cout<<"Product name: ";
-        cin.ignore();
-        getline(cin, newProduct.name);
+    cout<<"Quantity(numerical only): ";
+    cin>> newProduct.quantity;
 
-        cout<<"Quantity: ";
-        cin>> newProduct.quantity;
+    cout<<"Price (numerical only): ";
+    cin>> newProduct.price;
 
-        cout<<"Price: ";
-        cin>> newProduct.price;
-
-        cart.push_back(newProduct);
-        cout<<"Item added succesfully!\n\n";
+    cart.push_back(newProduct);
+    cout<<"Item added succesfully!\n\n";
    
 }
 
 // Function to update product quantity.
 void update_quantity(){
-    // vector<Product> cart;
     if(cart.empty()){
         cout<<"Your shopping cart is empty. Add items first!\n";
         return;
@@ -84,21 +79,21 @@ void update_quantity(){
             isItemFound = true;
             cout<<"The current quantity is: "<<cart[x].quantity<<"\n";
             int new_quantity;
-            cout<<"Enter New quantity: ";
+            cout<<"Enter New quantity(numerical only): ";
             cin>>new_quantity;
             cart[x].quantity = new_quantity;
             cout<<"Quantity updated succesfully!\n\n";
-
+            return;
         }
     }
     if (isItemFound == false){
         cout<<"Item not found.\n";
+        return;
     }
 }
 
 // Function to remove product.
 void remove_product(){
-    // vector<Product> cart;
     if(cart.empty()){
         cout<<"Your shopping cart is empty!\n";
         return;
@@ -111,11 +106,9 @@ void remove_product(){
     for(int x=0; x < cart.size();x++){
         if(lookup_item == cart[x].name){
             isItemFound = true;
-            cart.erase(cart.begin() + 1);
+            cart.erase(cart.begin() + x);
             cout<<"Item removed succesfully!\n";
-            if(cart.empty()){
-                cout<<"Your shopping cart is empty!\n";
-            }
+            return;
         }
     }
     if (isItemFound == false){
