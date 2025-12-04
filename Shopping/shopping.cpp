@@ -73,10 +73,8 @@ void update_quantity(){
     cout<<"Enter the name of the item to update: ";
     string lookup_item;
     cin>>lookup_item;
-    bool isItemFound = false;
     for(int x=0; x < cart.size();x++){
         if(lookup_item == cart[x].name){
-            isItemFound = true;
             cout<<"The current quantity is: "<<cart[x].quantity<<"\n";
             int new_quantity;
             cout<<"Enter New quantity(numerical only): ";
@@ -86,10 +84,7 @@ void update_quantity(){
             return;
         }
     }
-    if (isItemFound == false){
-        cout<<"Item not found.\n";
-        return;
-    }
+    cout<<"Item not found.\n";
 }
 
 // Function to remove product.
@@ -102,19 +97,14 @@ void remove_product(){
     cout<<"Enter the name of the item to remove: ";
     string lookup_item;
     cin>>lookup_item;
-    bool isItemFound = false;
     for(int x=0; x < cart.size();x++){
         if(lookup_item == cart[x].name){
-            isItemFound = true;
             cart.erase(cart.begin() + x);
             cout<<"Item removed succesfully!\n";
             return;
         }
     }
-    if (isItemFound == false){
-        cout<<"Item not found.\n";
-    }
-
+    cout<<"Item not found.\n";
 }
 
 
