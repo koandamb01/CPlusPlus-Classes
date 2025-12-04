@@ -35,20 +35,17 @@ int powerFunction(int base, int exponent){
 
 // 6. isPositive function
 bool ispositiveFunction(int n){
-    bool isPositive = false;
     if (n > 0){
-        isPositive = true;
         return true;
-    //  return;
     }
-    return isPositive;
+    return false;
 }
 
 // 7. isVowel function 
 bool isVowelFunction(char c){
     bool isVowel = false;
     if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
-    isVowel = true;
+        isVowel = true;
     }
     return isVowel;
 }
